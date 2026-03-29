@@ -1,0 +1,152 @@
+/* app/globals.css — BetongGold AI Design System */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #08090d;
+  --s1: #0f1117;
+  --s2: #161b23;
+  --s3: #1d2330;
+  --border: #1f2633;
+  --border2: #2a3344;
+  --gold: #c9a84c;
+  --gold2: #dfc06a;
+  --gold-dim: #7a621e;
+  --gold-bg: rgba(201, 168, 76, 0.08);
+  --text: #e4e0d8;
+  --muted: #5a6478;
+  --muted2: #8590a6;
+  --green: #3ecf8e;
+  --red: #f76b6b;
+  --amber: #f0b429;
+  --blue: #4b8ef0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  line-height: 1.5;
+}
+
+/* Typography */
+.font-serif { font-family: var(--font-serif, 'Playfair Display', serif); }
+.font-mono  { font-family: var(--font-mono, 'DM Mono', monospace); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--s1); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+/* ── CUSTOM COMPONENTS ────────────────────────────────────── */
+
+/* Card */
+.ia-card {
+  @apply rounded-none border;
+  background: var(--s1);
+  border-color: var(--border);
+}
+
+/* Card Label */
+.ia-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.ia-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Input */
+.ia-input {
+  background: var(--s2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  font-family: var(--font-sans);
+  @apply w-full px-3.5 py-2.5 text-sm outline-none transition-colors rounded-none;
+}
+.ia-input:focus { border-color: var(--gold-dim); }
+.ia-input::placeholder { color: var(--muted); }
+
+/* Button variants */
+.ia-btn-gold {
+  background: var(--gold);
+  color: #08090d;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  @apply w-full py-3.5 border-none cursor-pointer transition-all rounded-none;
+}
+.ia-btn-gold:hover { background: var(--gold2); transform: translateY(-1px); }
+.ia-btn-gold:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+.ia-btn-outline {
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--muted2);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  @apply px-4 py-2 cursor-pointer transition-all rounded-none;
+}
+.ia-btn-outline:hover { border-color: var(--gold-dim); color: var(--text); }
+
+/* Verdict cards */
+.verdict-buy  { background: rgba(62,207,142,0.05); border-color: rgba(62,207,142,0.2); }
+.verdict-wait { background: rgba(240,180,41,0.05); border-color: rgba(240,180,41,0.2); }
+.verdict-avoid { background: rgba(247,107,107,0.05); border-color: rgba(247,107,107,0.2); }
+
+/* Metrics */
+.metric-val-pos { color: var(--green); }
+.metric-val-neg { color: var(--red); }
+.metric-val-neu { color: var(--gold); }
+.metric-val-warn { color: var(--amber); }
+
+/* Table */
+.ia-table { @apply w-full border-collapse; }
+.ia-table th {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  @apply pb-2.5 text-left;
+  border-bottom: 1px solid var(--border);
+}
+.ia-table th:not(:first-child) { @apply text-right; }
+.ia-table td { @apply py-2.5 text-sm; border-bottom: 1px solid var(--border); }
+.ia-table td:not(:first-child) { @apply text-right; font-family: var(--font-mono); font-size: 12px; }
+.ia-table tr:last-child td { border-bottom: none; }
+.ia-table tr.total td { color: var(--gold); font-weight: 500; @apply pt-3.5; }
+
+/* Highlight box */
+.ia-highlight {
+  background: var(--s3);
+  border-left: 3px solid var(--gold);
+  @apply px-5 py-4 text-sm leading-relaxed;
+  border-radius: 0 2px 2px 0;
+}
+
+/* Animations */
+@keyframes slideIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes spin    { to { transform: rotate(360deg); } }
+
+.animate-slideIn { animation: slideIn 0.4s ease; }
+.animate-fadeIn  { animation: fadeIn 0.3s ease; }

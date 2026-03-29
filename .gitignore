@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.env
+.env.local
+.DS_Store
+*.pem
+npm-debug.log*
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+*.command
+SETUP-GUIDE-TEST-UMGEBUNG.md
+COWORK_INSTRUCTIONS.md
+package-lock.json
